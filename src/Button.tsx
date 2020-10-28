@@ -24,10 +24,17 @@ export default function Button({
   viewStyle?: ViewStyle;
   fullWidth?: boolean;
   icon?: ReactNode;
+  type?: 'text' | 'button';
 }) {
   const { theme } = useUI();
 
-  const { loading, fullWidth, disabled, color = theme.COLORS.PRIMARY } = props;
+  const {
+    loading,
+    type,
+    fullWidth,
+    disabled,
+    color = theme.COLORS.PRIMARY,
+  } = props;
 
   const bgColorValue = useRef(new Animated.Value(0)).current;
 
@@ -58,11 +65,14 @@ export default function Button({
           overflow: 'hidden',
           width: '100%',
           borderRadius: fullWidth ? 0 : 4,
-          backgroundColor: interpolateColors(
-            bgColorValue,
-            [0, 1],
-            [color, theme.COLORS.MUTED],
-          ) as any,
+          backgroundColor:
+            type === 'text'
+              ? undefined
+              : (interpolateColors(
+                  bgColorValue,
+                  [0, 1],
+                  [color, theme.COLORS.MUTED],
+                ) as any),
         },
         { ...viewStyle },
       ]}
@@ -74,16 +84,20 @@ export default function Button({
       >
         <View style={[styles.button]}>
           {loading && !icon && typeof children === 'string' ? (
-            <ActivityIndicator color={theme.COLORS.WHITE} />
+            <ActivityIndicator
+              color={type === 'text' ? color : theme.COLORS.WHITE}
+            />
           ) : typeof children === 'string' ? (
             <>
               {loading ? (
-                <ActivityIndicator color={theme.COLORS.WHITE} />
+                <ActivityIndicator
+                  color={type === 'text' ? color : theme.COLORS.WHITE}
+                />
               ) : (
                 icon
               )}
               <Text
-                color={theme.COLORS.WHITE}
+                color={type === 'text' ? color : theme.COLORS.WHITE}
                 bold
                 size={18}
                 style={{ marginLeft: icon ? 8 : 0 }}

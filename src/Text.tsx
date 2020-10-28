@@ -6,7 +6,6 @@ import {
   TextProps,
 } from 'react-native';
 import { useUI } from './context/UIContext';
-import { invertHex } from './utils/invert-color';
 
 const pixelRatio = PixelRatio.get();
 const deviceHeight = Dimensions.get('window').height;
@@ -86,10 +85,8 @@ export default function Text(
     muted?: boolean;
   },
 ) {
-  const { theme, darkMode } = useUI();
-
-  const _color = props.color || (props.muted ? theme.COLORS.MUTED : undefined);
-  const color = darkMode && _color ? invertHex(_color.substr(1)) : _color;
+  const { theme } = useUI();
+  const color = props.color || (props.muted ? theme.COLORS.MUTED : undefined);
   const fontSize = props.size
     ? props.size
     : props.h5
