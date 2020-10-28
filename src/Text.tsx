@@ -89,7 +89,7 @@ export default function Text(
   const { theme, darkMode } = useUI();
 
   const _color = props.color || (props.muted ? theme.COLORS.MUTED : undefined);
-  const color = darkMode && _color ? invertHex(_color) : _color;
+  const color = darkMode && _color ? invertHex(_color.substr(1)) : _color;
   const fontSize = props.size
     ? props.size
     : props.h5
