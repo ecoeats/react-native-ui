@@ -1,3 +1,3 @@
-# ecoeats React Native UI
+![ecoeats](https://cdn.ecoeats.uk/assets/logo.png)
 
-> Components for ecoeats apps
+<h2 align="center">React Native UI Components</h2>
