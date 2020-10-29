@@ -7,10 +7,12 @@ export default function AlertBox({
   icon,
   color,
   textColor,
+  children,
 }: {
   icon?: React.Component;
   color?: string;
   textColor?: string;
+  children: any;
 }) {
   const { theme } = useUI();
 
@@ -28,10 +30,11 @@ export default function AlertBox({
     >
       {icon}
       <View style={{ marginRight: 18, marginLeft: 8 }}>
-        <Text color={textColor || theme.COLORS.WHITE}>
-          You are required by law to maintain personal food delivery vehicle
-          insurance in order to deliver for ecoeats in a car.
-        </Text>
+        {typeof children === 'string' ? (
+          <Text color={textColor || theme.COLORS.WHITE}>{children}</Text>
+        ) : (
+          children
+        )}
       </View>
     </View>
   );
