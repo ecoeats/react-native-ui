@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import { useUI } from './context/UIContext';
 import Text from './Text';
 
@@ -8,7 +8,8 @@ export default function AlertBox({
   color,
   textColor,
   children,
-}: {
+  ...props
+}: ViewProps & {
   icon?: ReactNode;
   color?: string;
   textColor?: string;
@@ -18,6 +19,7 @@ export default function AlertBox({
 
   return (
     <View
+      {...props}
       style={{
         marginVertical: 8,
         padding: 8,
