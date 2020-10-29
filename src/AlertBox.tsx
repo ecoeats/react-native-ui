@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { View } from 'react-native';
 import { useUI } from './context/UIContext';
 import Text from './Text';
@@ -9,7 +9,7 @@ export default function AlertBox({
   textColor,
   children,
 }: {
-  icon?: React.Component;
+  icon?: ReactNode;
   color?: string;
   textColor?: string;
   children: any;
