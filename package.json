@@ -1,6 +1,6 @@
 {
   "name": "@ecoeats/react-native-ui",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "scripts": {
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
