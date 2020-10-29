@@ -1,3 +1,4 @@
+export { default as AlertBox } from './src/AlertBox';
 export { default as Button } from './src/Button';
 export { default as Checkbox } from './src/Checkbox';
 export { UIProvider, useUI } from './src/context/UIContext';
