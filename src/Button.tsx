@@ -2,6 +2,7 @@ import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
 import {
   ActivityIndicator,
   StyleSheet,
+  TextStyle,
   TouchableNativeFeedbackProps,
   View,
   ViewStyle,
@@ -16,12 +17,14 @@ export default function Button({
   children,
   viewStyle,
   icon,
+  textStyle,
   ...props
 }: TouchableNativeFeedbackProps & {
   children: any;
   color?: string;
   loading?: boolean;
   viewStyle?: ViewStyle;
+  textStyle?: TextStyle;
   fullWidth?: boolean;
   icon?: ReactNode;
   type?: 'text' | 'button';
@@ -100,7 +103,7 @@ export default function Button({
                 color={type === 'text' ? color : theme.COLORS.WHITE}
                 bold
                 size={18}
-                style={{ marginLeft: icon ? 8 : 0 }}
+                style={{ marginLeft: icon ? 8 : 0, ...(textStyle || {}) }}
               >
                 {children}
               </Text>
