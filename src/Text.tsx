@@ -86,7 +86,8 @@ export default function Text(
   },
 ) {
   const { theme } = useUI();
-  const color = props.color || (props.muted ? theme.COLORS.MUTED : undefined);
+  const color =
+    props.color || (props.muted ? theme.COLORS.MUTED : theme.COLORS.TEXT);
   const fontSize = props.size
     ? props.size
     : props.h5
